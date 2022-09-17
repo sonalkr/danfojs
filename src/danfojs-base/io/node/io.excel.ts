@@ -76,7 +76,7 @@ const $readExcel = async (filePath: string, options: ExcelInputOptionsNode = {})
         return new Promise(resolve => {
             const workbook = readFile(filePath);
             const worksheet = workbook.Sheets[workbook.SheetNames[sheet]];
-            const data = utils.sheet_to_json(worksheet);
+            const data = utils.sheet_to_json(worksheet, {defval: null});
             const df = new DataFrame(data, frameConfig);
             resolve(df);
         });
